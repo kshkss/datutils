@@ -1,0 +1,20 @@
+[package]
+name = "datutils"
+version = "0.1.0"
+authors = ["Akishika Issui <kshkss@users.noreply.github.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.41"
+flate2 = "1.0.20"
+lz4 = "1.23.2"
+rmp-serde = "0.15.5"
+serde = "1.0.126"
+xz = "0.1.0"
+zstd = "0.9.0"
+
+[dev-dependencies]
+ndarray = { version = "0.15.3", features = ["serde"] }
+serde = { version = "1.0.126", features = ["derive"] }
