@@ -43,7 +43,7 @@ where
     P: AsRef<Path>,
     T: Serialize,
 {
-    let msg = rmp_serde::to_vec(obj)?;
+    let msg = rmp_serde::to_vec_named(obj)?;
     let enc = File::create(filepath)?;
     let mut enc = BufWriter::new(enc);
     enc.write_all(msg.as_ref())?;
@@ -66,7 +66,7 @@ where
     P: AsRef<Path>,
     T: Serialize,
 {
-    let msg = rmp_serde::to_vec(obj)?;
+    let msg = rmp_serde::to_vec_named(obj)?;
     let enc = File::create(filepath)?;
     let enc = BufWriter::new(enc);
     let mut enc = lz4::EncoderBuilder::new().build(enc)?;
@@ -92,7 +92,7 @@ where
     P: AsRef<Path>,
     T: Serialize,
 {
-    let msg = rmp_serde::to_vec(obj)?;
+    let msg = rmp_serde::to_vec_named(obj)?;
     let fd = File::create(filepath)?;
     let enc = BufWriter::new(fd);
     let mut enc = zstd::Encoder::new(enc, 0)?;
@@ -118,7 +118,7 @@ where
     P: AsRef<Path>,
     T: Serialize,
 {
-    let msg = rmp_serde::to_vec(obj)?;
+    let msg = rmp_serde::to_vec_named(obj)?;
     let fd = File::create(filepath)?;
     let enc = BufWriter::new(fd);
     let mut enc = flate2::write::GzEncoder::new(enc, Default::default());
@@ -144,7 +144,7 @@ where
     P: AsRef<Path>,
     T: Serialize,
 {
-    let msg = rmp_serde::to_vec(obj)?;
+    let msg = rmp_serde::to_vec_named(obj)?;
     let fd = File::create(filepath)?;
     let enc = BufWriter::new(fd);
     let mut enc = xz::write::XzEncoder::new(enc, 6);
